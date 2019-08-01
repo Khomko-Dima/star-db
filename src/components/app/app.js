@@ -5,7 +5,8 @@ import RandomPlanet from '../random-planet';
 import ErrorBoundry from '../error-boundry';
 
 import ItemDetails, { Record } from "../item-details/item-details";
-import SwapiService from "../../services/swapi-service";
+import SwapiService from '../../services/swapi-service';
+// import DummySwapiService from '../../services/dummy-swapi-service';
 
 import { SwapiServiceProvider } from '../swapi-service-context';
 
@@ -23,6 +24,7 @@ import './app.css';
 export default class App extends Component {
 
   swapiService = new SwapiService();
+  // swapiService = new DummySwapiService();
 
   state = {
     showRandomPlanet: true
