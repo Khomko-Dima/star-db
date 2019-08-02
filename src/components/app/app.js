@@ -13,6 +13,7 @@ import {
 } from '../pages';
 
 import './app.css';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 export default class App extends Component {
 
@@ -24,15 +25,19 @@ export default class App extends Component {
 
       <ErrorBoundry>
         <SwapiServiceProvider value={this.swapiService} >
+          <Router>
 
-          <div className="stardb-app">
-            <Header />
-            <RandomPlanet/>
-            <PeoplePage />
-            <PlanetsPage />
-            <StarshipsPage />
-          </div>
+            <div className="stardb-app">
+              <Header />
+              <RandomPlanet/>
+              
+                <Route path="/people" component={PeoplePage} />
+                <Route path="/planets" component={PlanetsPage} />
+                <Route path="/starships" component={StarshipsPage} />
 
+            </div>
+
+          </Router>
         </SwapiServiceProvider>
       </ErrorBoundry>
 
