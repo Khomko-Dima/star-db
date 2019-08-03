@@ -12,10 +12,9 @@ import {
           StarshipsPage,
           LoginPage,
           SecretPage } from '../pages';
-import StarshipDetails from "../sw-components/starship-details";
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import StarshipDetails from '../sw-components/starship-details';
+import { BrowserRouter as Router, Route, Switch, Redirect  } from 'react-router-dom';
 import './app.css';
-import './bootstrap.min.css';
 
 export default class App extends Component {
 
@@ -44,12 +43,10 @@ export default class App extends Component {
             <div className="stardb-app">
               <Header />
               <RandomPlanet/>
-              
+              <Switch>
+
                 <Route path="/" 
                         render={() => <h2>Welcome to StartDB</h2>}
-                        exact />
-                <Route path="/people" 
-                        render={() => <h2>People</h2>}
                         exact />
                 <Route path="/people/:id?" component={PeoplePage} />
                 <Route path="/planets" component={PlanetsPage} />
@@ -73,6 +70,10 @@ export default class App extends Component {
                     <SecretPage isLoggedIn={isLoggedIn} />
                   )}/>
 
+                {/*<Redirect to="/" /> если страница не найдена, на главную*/}
+                <Route render={() => <h2>Page not found</h2>} />
+
+              </Switch>
             </div>
 
           </Router>
